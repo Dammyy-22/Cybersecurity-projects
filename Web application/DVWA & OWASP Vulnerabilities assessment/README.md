@@ -22,7 +22,8 @@ I initiated the assessment with an automated scan using **OWASP ZAP** against th
 * **Result:** ZAP identified multiple high-priority alerts, including SQL Injection, Cross-Site Scripting (Reflected), and Directory Traversal.
 * **Verification:** I used these alerts as a roadmap for manual exploitation.
 
-![](C:\Users\hp\Documents\Projects\CyberSecurity\Cybersecurity-projects\Web%20application\DVWA%20&%20OWASP%20Vulnerabilities%20assessment\screenshots\alerts.png)
+<img width="958" height="455" alt="alerts" src="https://github.com/user-attachments/assets/c4ea66f2-57d8-4214-8e02-eca1abd78456" />
+
 
 ---
 
@@ -36,11 +37,12 @@ This was the most critical finding. The application failed to sanitize user inpu
 * **Observation:** The application executed the ping, followed immediately by the `cat` command.
 * **Impact:** I was able to retrieve the sensitive `/etc/passwd` file, revealing the list of all system users (e.g., `root`, `msfadmin`, `service` accounts). This confirms **Remote Code Execution (RCE)**.
 
-![](C:\Users\hp\Documents\Projects\CyberSecurity\Cybersecurity-projects\Web%20application\DVWA%20&%20OWASP%20Vulnerabilities%20assessment\screenshots\Command%20ls%20execution.png)
+<img width="958" height="461" alt="Command ls execution" src="https://github.com/user-attachments/assets/fe42c224-f952-41b0-8795-2b07728e718f" />
 
 
+<img width="960" height="463" alt="Command passwd execution" src="https://github.com/user-attachments/assets/096cd563-7f09-43d1-b3e0-b7f9297525fb" />
 
-![](C:\Users\hp\Documents\Projects\CyberSecurity\Cybersecurity-projects\Web%20application\DVWA%20&%20OWASP%20Vulnerabilities%20assessment\screenshots\Command%20passwd%20execution.png)
+
 
 #### B. Reflected Cross-Site Scripting (XSS)
 
@@ -50,10 +52,9 @@ I identified an input field that reflected user data back to the browser without
 * **Observation:** Upon submission, the browser executed the JavaScript immediately, displaying a popup alert.
 * **Impact:** An attacker could use this to steal session cookies, redirect users to phishing sites, or perform actions on behalf of the victim.
 
-![](C:\Users\hp\Documents\Projects\CyberSecurity\Cybersecurity-projects\Web%20application\DVWA%20&%20OWASP%20Vulnerabilities%20assessment\screenshots\XSS%20Script.png)
+<img width="959" height="460" alt="XSS Script" src="https://github.com/user-attachments/assets/2383437c-5e68-4b1d-b3fc-772e1024a5f9" />
 
-![](C:\Users\hp\Documents\Projects\CyberSecurity\Cybersecurity-projects\Web%20application\DVWA%20&%20OWASP%20Vulnerabilities%20assessment\screenshots\XSS%20Popup.png)
-
+<img width="960" height="431" alt="XSS Popup" src="https://github.com/user-attachments/assets/2f305dc6-9a9e-443c-bc50-9abfd32e9da2" />
 
 
 #### C. SQL Injection (SQLi)
@@ -64,7 +65,7 @@ The "User ID" lookup field was found to be vulnerable to SQL injection, allowing
 * **Test 2 (Bypass):** Inputting `' OR '1'='1' #` forced the database to return all records by making the query logically true.
 * **Impact:** Full database disclosure and potential authentication bypass.\
 
-![](C:\Users\hp\Documents\Projects\CyberSecurity\Cybersecurity-projects\Web%20application\DVWA%20&%20OWASP%20Vulnerabilities%20assessment\screenshots\SQL%20injection.png)
+<img width="958" height="460" alt="SQL injection" src="https://github.com/user-attachments/assets/200c9381-c178-4ebd-b53f-44183d738a07" />
 
 ## Remediation Recommendations
 
